@@ -1,0 +1,48 @@
+.site-main {
+  padding: 2rem 0 4rem;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.site-header {
+  backdrop-filter: blur(12px);
+  position: static;
+  top: 0;
+  z-index: 10;
+  background-color: transparent;
+  justify-content: space-between;
+  color: #1b518c;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo a {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 1.1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  opacity: 1;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  opacity: 1;
+  border-bottom: 2px solid #38bdf8;
+}

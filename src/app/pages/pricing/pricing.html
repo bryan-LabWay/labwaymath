@@ -1,1 +1,26 @@
-<p>pricing works!</p>
+<section class="pricing">
+  <div class="pricing__banner">
+    <h1 class="pricing__title">Change Math Learning in Your Home</h1>
+    <div class="pricing__circle"></div>
+  </div>
+
+  <div class="pricing__cards">
+    <app-pricing-card
+      *ngFor="let tier of pricingTiers"
+      [tier]="tier"
+    ></app-pricing-card>
+  </div>
+
+  <div class="pricing__discount">
+    <label for="discount-input" class="pricing__discount-label">
+      Enter your discount code:
+    </label>
+    <input
+      id="discount-input"
+      type="text"
+      [(ngModel)]="discountCode"
+      class="pricing__discount-input"
+    />
+  </div>
+</section>
+<app-footer></app-footer>

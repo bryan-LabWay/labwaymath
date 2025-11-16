@@ -1,0 +1,44 @@
+.current-curriculums {
+  padding: 90px 0; // similar top spacing in your screenshot
+  background: #ffffff;
+}
+
+.current-curriculums__inner {
+  max-width: 1367px; // matches the layout width seen in the screenshot
+  margin: 0 auto;
+  padding: 0 16px;   // responsive safety padding
+}
+
+/* -------------------------------
+   TEXT BLOCK (same position as screenshot)
+----------------------------------*/
+
+.current-curriculums__text {
+  text-align: left;     // screenshot text is left-aligned
+  margin-bottom: 36px;  // distance between text + image matches screenshot
+  max-width: 1000px;     // text block width visually approximated from image
+  margin-left: auto;
+  margin-right: auto;   // centers the text block inside the big container
+
+  p {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 22px;
+    line-height: 1.35;
+    color: #333;
+    margin: 0;
+  }
+
+  .line-1 {
+    margin-bottom: 6px; // tight spacing like screenshot
+  }
+}
+
+/* -------------------------------
+   IMAGE
+----------------------------------*/
+.current-curriculums__image {
+  display: block;
+  width: 100%;   // responsive
+  height: auto;
+  border-radius: 0;
+}

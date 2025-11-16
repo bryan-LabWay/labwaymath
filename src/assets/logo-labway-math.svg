@@ -1,0 +1,33 @@
+<svg
+  width="300"
+  height="320"
+  viewBox="0 0 300 320"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <polygon
+    points="150,10 20,120 20,310 280,310 280,120"
+    fill="#005AA9"
+  />
+  <text
+    x="150"
+    y="150"
+    font-family="Arial, sans-serif"
+    font-size="72"
+    fill="#FFFFFF"
+    text-anchor="middle"
+    dominant-baseline="middle"
+  >
+    L.A.B.
+  </text>
+  <text
+    x="150"
+    y="245"
+    font-family="Arial, sans-serif"
+    font-size="72"
+    fill="#FFFFFF"
+    text-anchor="middle"
+    dominant-baseline="middle"
+  >
+    Way
+  </text>
+</svg>

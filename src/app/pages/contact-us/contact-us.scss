@@ -1,0 +1,136 @@
+.contact-page {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0;
+  
+}
+
+/* Wrapper for banner + circle + card */
+.contact-banner {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 15rem;   // add bottom spacing before footer
+  padding-bottom: 320px; // <- key line: reserve vertical space for the card
+}
+
+/* Blue strip (copy values from your Pricing banner here) */
+.banner-strip {
+  width: 100%;
+  height: 190px;
+  background-color: #0b5694;
+  border-radius: 15px;
+}
+
+/* Big circle with logo */
+.logo-circle {
+  position: absolute;
+  left: 20px;       // move a bit more to the right
+  top: 40px;         // slightly higher
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background-color: #2d7fc7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+.logo-house {
+  max-width: 55%;
+}
+
+/* White roundedcontact card */
+.contact-card {
+  position: absolute;
+  right: 0;
+  left: 90px;
+  top: 40px;
+  margin: 0 auto;
+  max-width: 650px;
+  background: #ffffff;
+  border-radius: 60px;
+  padding: 3rem 3.5rem 2.5rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+}
+
+/* Title */
+.contact-title {
+  margin: 0 0 1.8rem;
+  font-size: 2.25rem;
+  font-weight: 500;
+  color: #4b4b4b;
+}
+
+/* Form layout */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #2b7bbf; // bluish label text like in design
+}
+
+.form-group .required {
+  color: #e53935;
+  margin-left: 0.15rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid #d3d3d3;
+  background-color: #f2f2f2;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.98rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+/* Submit button row */
+.submit-row {
+  margin-top: 1.4rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Pill-shaped button like the design */
+.submit-btn {
+  min-width: 220px;
+  padding: 0.7rem 2.5rem;
+  border-radius: 999px;
+  border: none;
+  background-color: #0b5694;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  filter: brightness(1.05);
+}
+
+/* Small responsiveness */
+@media (max-width: 900px) {
+  .logo-circle {
+    display: none; // hide circle on very small screens
+  }
+
+  .contact-card {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: -90px;
+    max-width: 100%;
+    border-radius: 40px;
+  }
+}

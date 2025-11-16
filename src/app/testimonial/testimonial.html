@@ -1,0 +1,43 @@
+<section class="testimonial-section">
+  <div class="avatars">
+    <img src="assets/avatars/a1.jpg" class="avatar a1" />
+    <img src="assets/avatars/a2.jpg" class="avatar a2" />
+    <img src="assets/avatars/a3.jpg" class="avatar a3" />
+    <img src="assets/avatars/a4.jpg" class="avatar a4" />
+    <img src="assets/avatars/a5.jpg" class="avatar a5" />
+  </div>
+
+  <h2 class="title">What other parents say</h2>
+
+  <div class="carousel-container">
+
+    <button class="nav-btn left" (click)="prev()">‹</button>
+
+    <div class="carousel">
+      <div
+        class="slide"
+        *ngFor="let t of testimonials; let i = index"
+        [class.active]="i === currentIndex"
+      >
+        <p class="quote">“{{ t.quote }}”</p>
+
+        <div class="author">
+          <img [src]="t.avatar" class="author-img" />
+          <div>
+            <p class="name">– {{ t.name }}, parent</p>
+            <!-- <p class="sub">– {{ t.child }}</p> -->
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <button class="nav-btn right" (click)="next()">›</button>
+  </div>
+  <div class="dots">
+    <span
+    *ngFor="let t of testimonials; let i = index"
+    [class.active]="i === currentIndex"
+    (click)="goTo(i)"
+    ></span>
+</div>
+</section>

@@ -1,0 +1,132 @@
+.testimonial-section {
+  position: relative;
+  padding: 50px 20px;
+  background: #121212;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.carousel-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 220px;
+}
+
+.slide {
+  display: none;
+  max-width: 700px;
+  margin: auto;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.slide.active {
+  display: block;
+  opacity: 1;
+}
+
+.quote {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+.author {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.author-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.sub {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Navigation arrows */
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 10px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.nav-btn:hover {
+  opacity: 1;
+}
+
+.left {
+  left: -40px;
+}
+
+.right {
+  right: -40px;
+}
+
+/* Dots */
+.dots {
+  margin-top: 200px;
+}
+
+.dots span {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  background: #666;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dots span.active {
+  background: #fff;
+}
+
+/* Floating avatars around the section */
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  position: absolute;
+  object-fit: cover;
+}
+
+.a1 { top: 40px; left: 25%; }
+.a2 { top: 110px; right: 21%; }
+.a3 { bottom: 80px; left: 15%; }
+.a4 { bottom: 130px; right: 12%; }
+.a5 { top: 180px; left: 5%; }

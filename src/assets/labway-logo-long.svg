@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="24 9 234 67"
+  role="img"
+  aria-labelledby="labwayLogoTitle"
+>
+  <title id="labwayLogoTitle">LABWay Math</title>
+
+  <style>
+    text {
+      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    }
+  </style>
+
+  <!-- Blue house -->
+  <polygon
+    points="25,36 55,10 85,36 85,75 25,75"
+    fill="#005AA9"
+  />
+
+  <!-- L.A.B. -->
+  <text
+    x="55"
+    y="45"
+    font-size="19"
+    font-weight="600"
+    fill="#FFFFFF"
+    text-anchor="middle"
+  >
+    L.A.B.
+  </text>
+
+  <!-- Way -->
+  <text
+    x="55"
+    y="66"
+    font-size="19"
+    font-weight="600"
+    fill="#FFFFFF"
+    text-anchor="middle"
+  >
+    Way
+  </text>
+
+  <!-- LABWay Math — 26px, close to house -->
+  <text
+    x="90"
+    y="55"
+    font-size="26"
+    font-weight="500"
+    fill="#005AA9"
+  >
+    LABWay Math
+  </text>
+</svg>

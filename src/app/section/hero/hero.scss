@@ -154,6 +154,7 @@
   right: 1%;
   bottom: -7%;
   z-index: 3;
+  filter: drop-shadow(10px 8px 12px rgba(0, 0, 0, 0.6));
 }
 
 .hero__visual-layer--circle1 {
@@ -175,6 +176,7 @@
   width: 75%;
   max-width: 500px;
   display: block;
+  border-radius: 20px;
 }
 
 /* Responsive tweaks */

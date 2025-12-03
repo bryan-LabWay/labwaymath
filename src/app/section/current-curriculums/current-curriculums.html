@@ -1,20 +1,21 @@
-<section class="current-curriculums">
-  <div class="current-curriculums__inner">
-
-    <div class="current-curriculums__text">
-      <p class="line-1">
-        You don’t need to replace your curriculum / lessons.
-      </p>
-      <p class="line-2">
-        LABWay Math shows you how to add the element(s) most curriculum and lessons are missing.
+<section class="curriculums-section">
+  <div class="curriculums-inner">
+    <div class="curriculums-text">
+      <p>
+        You don't need to replace your curriculum / lessons.
+        <br>LABWay Math shows you how to add the element(s) most
+        curriculum and lessons are missing.
       </p>
     </div>
 
-    <img
-      src="assets/current-curriculums.jpg"
-      alt="Current curriculums supported by LABWay Math"
-      class="current-curriculums__image"
-    />
-
+    <div class="curriculums-table">
+      <div
+        class="book"
+        *ngFor="let book of books; let i = index"
+        [ngClass]="'book-' + i"
+      >
+        <img [src]="book.src" [alt]="book.name" />
+      </div>
+    </div>
   </div>
 </section>

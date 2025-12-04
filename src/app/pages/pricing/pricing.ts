@@ -16,6 +16,7 @@ export class Pricing {
 
   pricingTiers: PricingTier[] = [
     {
+      code: 'asynchronous_training',
       name: 'Asynchronous Training',
       price: 199,
       recommended: false,
@@ -33,6 +34,7 @@ export class Pricing {
       ],
     },
     {
+      code: 'small_group_training',
       name: 'Small Group Training',
       price: 899,
       recommended: true,
@@ -45,4 +47,14 @@ export class Pricing {
       ],
     },
   ];
+
+  selectedPlanCode = this.pricingTiers[1].code;
+
+  selectPlan(tier: PricingTier) {
+    this.selectedPlanCode = tier.code;
+  }
+
+  trackByTierCode(_index: number, plan: PricingTier) {
+    return plan.code;
+  }
 }

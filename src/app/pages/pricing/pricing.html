@@ -1,14 +1,23 @@
 <section class="pricing">
   <div class="pricing__banner">
-    <h1 class="pricing__title">Change Math Learning in Your Home</h1>
+    <h1 class="pricing__title">Change Math Learning in YOUR Home</h1>
     <div class="pricing__circle"></div>
   </div>
 
   <div class="pricing__cards">
-    <app-pricing-card
-      *ngFor="let tier of pricingTiers"
-      [tier]="tier"
-    ></app-pricing-card>
+    <div
+      class="pricing-card-wrapper"
+      *ngFor="let tier of pricingTiers; trackBy: trackByTierCode"
+      [class.selected]="tier.code === selectedPlanCode"
+      (click)="selectPlan(tier)"
+      tabindex="0"
+      role="button"
+      [attr.aria-pressed]="tier.code === selectedPlanCode"
+      (keyup.enter)="selectPlan(tier)"
+      (keyup.space)="selectPlan(tier)"
+    >
+      <app-pricing-card [tier]="tier"></app-pricing-card>
+    </div>
   </div>
 
   <div class="pricing__discount">

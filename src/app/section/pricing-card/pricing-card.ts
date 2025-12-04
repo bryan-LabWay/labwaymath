@@ -7,6 +7,7 @@ export interface PricingFeature {
 }
 
 export interface PricingTier {
+  code: string
   name: string;
   price: number;
   recommended?: boolean;

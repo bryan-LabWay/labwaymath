@@ -12,26 +12,25 @@
   <h3 class="pricing-card__subtitle">{{ tier.featuresTitle }}</h3>
 
   <ul class="pricing-features">
-  <li class="pricing-feature" *ngFor="let feature of tier.features">
-    <div class="pricing-feature__icon">
-      <img src="assets/icons/bigger-check.svg" alt="" />
-    </div>
-
-    <div class="pricing-feature__body">
-      <div class="pricing-feature__label">
-        {{ feature.label }}
+    <li class="pricing-feature" *ngFor="let feature of tier.features">
+      <div class="pricing-feature__icon">
+        <img src="assets/icons/bigger-check.svg" alt="" />
       </div>
 
-      <ul
-        class="pricing-feature__sublist"
-        *ngIf="feature.subItems?.length"
-      >
-        <li *ngFor="let sub of feature.subItems">
-          {{ sub }}
-        </li>
-      </ul>
-    </div>
-  </li>
-</ul>
+      <div class="pricing-feature__body">
+        <div class="pricing-feature__label">
+          {{ feature.label }}
+        </div>
 
+        <ul
+          class="pricing-feature__sublist"
+          *ngIf="feature.subItems?.length"
+        >
+          <li *ngFor="let sub of feature.subItems">
+            {{ sub }}
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
 </article>

@@ -44,6 +44,7 @@
   gap: 2.5rem;
   flex-wrap: wrap;
   z-index: 1;
+  align-items: stretch;
 }
 
 .pricing__discount {
@@ -88,4 +89,39 @@
   .pricing__cards {
     margin-top: -120px;
   }
+}
+
+/* Wrapper that controls interaction */
+.pricing-card-wrapper {
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+  transform-origin: center center;
+  transform: scale(1);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transform-origin: center center;
+}
+
+.pricing-card-wrapper:hover {
+  transform: scale(1.03);
+}
+
+
+/* Selected – slightly bigger + stronger shadow */
+.pricing-card-wrapper.selected {
+  transform: scale(1.15);
+  z-index: 1;
+}
+
+
+.pricing-card-wrapper.selected:hover {
+  transform: scale(1.17);
+}
+
+.pricing-card-wrapper {
+  user-select: none;
 }

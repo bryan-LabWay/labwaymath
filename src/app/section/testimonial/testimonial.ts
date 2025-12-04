@@ -24,7 +24,7 @@ export class Testimonial {
       avatar: 'assets/avatars/a2.jpg',
     },
     {
-      quote: 'My kids were doing okay in math, passing tests and all, but I knew there had to be more.  They weren\'t truly understanding or loving it, just going through the motions. Enrolling in LABWay Math\'s pilot opened our eyes to the underlying logic of math, and the Socratic methods helped them discover ideas in a way that built real confidence and connection. The UCL Library and how-to videos are fantastic resources we revisit often. Now, math day is a a good day. It’s even fostering critical thinking I see spilling into other subjects too.',
+      quote: 'My kids were doing okay in math, passing tests and all, but I knew there had to be more.  They weren\'t truly understanding or loving it, just going through the motions. Enrolling in LABWay Math\'s pilot opened our eyes to the underlying logic of math, and the Socratic methods helped them discover ideas in a way that built real confidence and connection. The UCL Library and how-to videos are fantastic resources we revisit often. Now, math day is a good day. It’s even fostering critical thinking I see spilling into other subjects too.',
       name: 'Megan',
       avatar: 'assets/avatars/a3.jpg',
     },

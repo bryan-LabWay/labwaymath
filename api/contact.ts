@@ -1,24 +1,24 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { Resend } from "resend";
 
 function isValidEmail(email: string): boolean {
-  // simple validation (good enough for contact form)
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // Only allow POST
+module.exports = async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ message: "Method Not Allowed" });
   }
 
   try {
-    const { name, email, message } = (req.body ?? {}) as {
+    const { name, email, message, website } = (req.body ?? {}) as {
       name?: string;
       email?: string;
       message?: string;
+      website?: string; // honeypot
     };
+
+    if (website) return res.status(200).json({ ok: true });
 
     if (!name || !email || !message) {
       return res.status(400).json({ message: "Missing required fields." });
@@ -27,7 +27,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ message: "Invalid email address." });
     }
     if (message.length > 5000) {
-      return res.status(400).json({ message: "Message is too long." });
+      return res.status(400).json({ message: "Message too long." });
     }
 
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
@@ -38,12 +38,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(500).json({ message: "Server is not configured." });
     }
 
+    const { Resend } = await import("resend");
     const resend = new Resend(RESEND_API_KEY);
 
-    // NOTE: `reply_to` is supported by Resend’s API payload. :contentReference[oaicite:2]{index=2}
     const { error } = await resend.emails.send({
-      from: CONTACT_FROM_EMAIL, // e.g. "LABWay Math <no-reply@labwaymath.com>"
-      to: CONTACT_TO_EMAIL,     // e.g. "hello@labwaymath.com"
+      from: CONTACT_FROM_EMAIL,
+      to: CONTACT_TO_EMAIL,
       subject: `Contact Us: ${name}`,
       text: `From: ${name} <${email}>\n\n${message}`,
     });
@@ -56,4 +56,4 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   } catch (err) {
     return res.status(500).json({ message: "Unexpected server error." });
   }
-}
+};

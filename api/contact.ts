@@ -4,7 +4,7 @@ function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+module.exports = async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ message: "Method Not Allowed" });
@@ -38,7 +38,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(500).json({ message: "Server is not configured." });
     }
 
-    // ✅ Works even if Vercel runs this function as CommonJS:
     const { Resend } = await import("resend");
     const resend = new Resend(RESEND_API_KEY);
 
@@ -57,4 +56,4 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   } catch (err) {
     return res.status(500).json({ message: "Unexpected server error." });
   }
-}
+};

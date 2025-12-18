@@ -188,3 +188,22 @@ textarea {
 }
 
 }
+
+.error {
+  color: #dc2626; // red-600
+  font-size: 0.85rem;
+  margin-top: 4px;
+  display: block;
+}
+
+input.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid {
+  border-color: #dc2626; // red-600
+  outline: none;
+}
+
+input.ng-touched.ng-invalid:focus,
+textarea.ng-touched.ng-invalid:focus {
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+}
+

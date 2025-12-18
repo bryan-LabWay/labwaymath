@@ -70,8 +70,7 @@ export class ContactUs {
         error: (err) => {
           // Non-200 (or network errors) land here too
           this.errorMsg =
-            err?.error?.message ||
-            'Unable to send message right now. Please try again later.';
+            this.errorMsg = this.extractErrorMessage(err);
         },
       });
   }
@@ -81,5 +80,28 @@ export class ContactUs {
   hasError(controlName: 'name' | 'email' | 'message', error: string) {
     const c = this.form.get(controlName);
     return !!c && c.touched && c.hasError(error);
+  }
+
+  private extractErrorMessage(err: any): string {
+    // Common case: backend returns JSON { message: "..." }
+    const msgFromObj = err?.error?.message;
+    if (typeof msgFromObj === 'string' && msgFromObj.trim()) return msgFromObj;
+
+    // Sometimes err.error is a plain string
+    if (typeof err?.error === 'string' && err.error.trim()) {
+      // try parsing JSON string
+      try {
+        const parsed = JSON.parse(err.error);
+        if (parsed?.message) return parsed.message;
+      } catch {
+        return err.error;
+      }
+    }
+
+    // Fallbacks
+    if (typeof err?.message === 'string' && err.message.trim()) return err.message;
+    if (typeof err?.status === 'number') return `Request failed (${err.status}). Please try again.`;
+
+    return 'Something went wrong. Please try again.';
   }
 }

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NgFor, NgClass } from '@angular/common'; 
+import { NgFor } from '@angular/common'; 
 
 @Component({
   selector: 'app-testimonial',
   standalone: true,
-  imports: [NgFor, NgClass],
+  imports: [NgFor],
   templateUrl: './testimonial.html',
   styleUrls: ['./testimonial.scss'],
 })

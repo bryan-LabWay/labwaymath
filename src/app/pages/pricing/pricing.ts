@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PricingCard, PricingTier } from '../../section/pricing-card/pricing-card';
-import { Footer } from '../../section/footer/footer';
 
 @Component({
   selector: 'app-pricing-page',
   standalone: true,
-  imports: [CommonModule, FormsModule, PricingCard, Footer],
+  imports: [CommonModule, FormsModule, PricingCard],
   templateUrl: './pricing.html',
   styleUrls: ['./pricing.scss'],
 })

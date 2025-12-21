@@ -4,6 +4,25 @@ function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+async function verifyRecaptcha(token: string, remoteip?: string): Promise<boolean> {
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
+  if (!secret) return false;
+
+  const params = new URLSearchParams();
+  params.set("secret", secret);
+  params.set("response", token);
+  if (remoteip) params.set("remoteip", remoteip);
+
+  const r = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: params.toString(),
+  });
+
+  const data = (await r.json()) as { success?: boolean; score?: number; action?: string };
+  return data.success === true;
+}
+
 module.exports = async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -11,11 +30,12 @@ module.exports = async function handler(req: VercelRequest, res: VercelResponse)
   }
 
   try {
-    const { name, email, message, website } = (req.body ?? {}) as {
+    const { name, email, message, website, recaptchaToken } = (req.body ?? {}) as {
       name?: string;
       email?: string;
       message?: string;
-      website?: string; // honeypot
+      website?: string;
+      recaptchaToken?: string; // ✅ new
     };
 
     if (website) return res.status(200).json({ ok: true });
@@ -28,6 +48,16 @@ module.exports = async function handler(req: VercelRequest, res: VercelResponse)
     }
     if (message.length > 5000) {
       return res.status(400).json({ message: "Message too long." });
+    }
+
+    // ✅ reCAPTCHA required
+    if (!recaptchaToken) {
+      return res.status(400).json({ message: "reCAPTCHA verification is required." });
+    }
+
+    const isHuman = await verifyRecaptcha(recaptchaToken, req.headers["x-forwarded-for"]?.toString());
+    if (!isHuman) {
+      return res.status(400).json({ message: "reCAPTCHA failed. Please try again." });
     }
 
     const RESEND_API_KEY = process.env.RESEND_API_KEY;

@@ -53,6 +53,17 @@
         <p class="api-success" *ngIf="successMsg">{{ successMsg }}</p>
         <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
 
+        <re-captcha 
+          formControlName="recaptchaToken"
+          (resolved)="onCaptchaResolved($event)"
+          (expired)="onCaptchaExpired()"
+        ></re-captcha>
+        
+        <small class="error"
+          *ngIf="form.controls.recaptchaToken.touched && form.controls.recaptchaToken.invalid">
+            Please verify you’re not a robot.
+        </small>
+        
         <!-- Submit button -->
         <div class="submit-row">
           <button

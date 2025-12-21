@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: {
-        siteKey: environment.recaptchaSiteKey,
+        siteKey: environment.recaptchaSecretKey,
       } as RecaptchaSettings,
     },
   ]

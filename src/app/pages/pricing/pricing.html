@@ -34,10 +34,9 @@
 
   <button
     class="submit-btn"
-    (click)="checkoutSelected()"
-    [disabled]="isCheckingOut"
+    (click)="goToSignup()"
   >
-    {{ isCheckingOut ? 'Redirecting…' : 'Sign Up' }}
+    Sign Up
   </button>
 
 <p class="error" *ngIf="checkoutError">{{ checkoutError }}</p>

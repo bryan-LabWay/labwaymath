@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PricingCard, PricingTier } from '../../section/pricing-card/pricing-card';
 import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pricing-page',
@@ -62,7 +63,14 @@ export class Pricing {
     return plan.priceId;
   }
 
-  constructor(private billing: BillingService) {}
+  constructor(private billing: BillingService, private router: Router) {}
+
+  goToSignup() {
+    this.checkoutError = '';
+    this.router.navigate(['/sign-up'], {
+      queryParams: { priceId: this.selectedPriceId },
+    });
+  }
 
   async checkoutSelected() {
     this.isCheckingOut = true;

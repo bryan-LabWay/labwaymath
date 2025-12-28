@@ -42,7 +42,7 @@ module.exports = async (req, res) => {
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
-  // ✅ Handle events
+  // Handle events
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
 

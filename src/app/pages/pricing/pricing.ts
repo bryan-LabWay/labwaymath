@@ -1,7 +1,9 @@
+import { BillingService } from '../../billing.service';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PricingCard, PricingTier } from '../../section/pricing-card/pricing-card';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-pricing-page',
@@ -13,9 +15,12 @@ import { PricingCard, PricingTier } from '../../section/pricing-card/pricing-car
 export class Pricing {
   discountCode = '';
 
+  isCheckingOut = false;
+  checkoutError = '';
+
   pricingTiers: PricingTier[] = [
     {
-      code: 'asynchronous_training',
+      priceId: environment.priceAsyncTraining,
       name: 'Asynchronous Training',
       price: 199,
       recommended: false,
@@ -33,7 +38,7 @@ export class Pricing {
       ],
     },
     {
-      code: 'small_group_training',
+      priceId: environment.priceSmallGroupTraining,
       name: 'Small Group Training',
       price: 899,
       recommended: true,
@@ -47,13 +52,28 @@ export class Pricing {
     },
   ];
 
-  selectedPlanCode = this.pricingTiers[1].code;
+  selectedPlanCode = this.pricingTiers[1].priceId;
 
   selectPlan(tier: PricingTier) {
-    this.selectedPlanCode = tier.code;
+    this.selectedPlanCode = tier.priceId;
   }
 
   trackByTierCode(_index: number, plan: PricingTier) {
-    return plan.code;
+    return plan.priceId;
+  }
+
+  constructor(private billing: BillingService) {}
+
+  async checkoutSelected() {
+    this.isCheckingOut = true;
+    this.checkoutError = '';
+
+    try {
+      const url = await this.billing.createCheckoutSession(this.selectedPlanCode);
+      window.location.href = url;
+    } catch (e: any) {
+      this.checkoutError = e?.message ?? 'Failed to start checkout.';
+      this.isCheckingOut = false;
+    }
   }
 }

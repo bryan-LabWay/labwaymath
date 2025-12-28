@@ -8,11 +8,11 @@
     <div
       class="pricing-card-wrapper"
       *ngFor="let tier of pricingTiers; trackBy: trackByTierCode"
-      [class.selected]="tier.code === selectedPlanCode"
+      [class.selected]="tier.priceId === selectedPlanCode"
       (click)="selectPlan(tier)"
       tabindex="0"
       role="button"
-      [attr.aria-pressed]="tier.code === selectedPlanCode"
+      [attr.aria-pressed]="tier.priceId === selectedPlanCode"
       (keyup.enter)="selectPlan(tier)"
       (keyup.space)="selectPlan(tier)"
     >
@@ -31,4 +31,15 @@
       class="pricing__discount-input"
     />
   </div>
+
+  <button
+  class="primary"
+  (click)="checkoutSelected()"
+  [disabled]="isCheckingOut"
+>
+  {{ isCheckingOut ? 'Redirecting…' : 'Proceed to Payment' }}
+</button>
+
+<p class="error" *ngIf="checkoutError">{{ checkoutError }}</p>
+
 </section>

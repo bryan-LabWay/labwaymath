@@ -69,7 +69,7 @@ export class SignUp {
   try {
     // 1) Capture lead first (email us)
     await this.http
-      .post('/api/signup-lead', {
+      .post('/api/signup', {
         fullName: this.form.getRawValue().fullName,
         email: this.form.getRawValue().email,
         phone: this.form.getRawValue().phone,

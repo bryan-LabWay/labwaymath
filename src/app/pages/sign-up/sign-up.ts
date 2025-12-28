@@ -20,7 +20,7 @@ export class SignUp {
   private router = inject(Router);
   private billing = inject(BillingService);
   private http = inject(HttpClient);
-  siteKey = environment.recaptchaSecretKey;
+  siteKey = environment.recaptchaSiteKey;
 
   isPaying = false;
   errorMsg = '';

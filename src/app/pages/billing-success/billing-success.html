@@ -1,3 +1,23 @@
-<h1>Payment received</h1>
-    <p *ngIf="sessionId">Session: {{ sessionId }}</p>
-    <p>You can now continue.</p>
+<section class="billing-success">
+  <!-- Loading -->
+  <p *ngIf="isLoading">Verifying your payment…</p>
+
+  <!-- Success -->
+  <div *ngIf="!isLoading && isPaid" class="billing-success__card">
+    <h1>Thank you.</h1>
+
+    <p>
+      LABWayMath will be in contact within 1–2 business days regarding your
+      assignment to your training group. If you don’t hear from us within
+      5 business days, please contact us at
+      <a href="mailto:information@labwaymath.com">
+        information@labwaymath.com
+      </a>
+      or
+      <a href="tel:+17196026438">719.602.6438</a>.
+    </p>
+  </div>
+
+  <!-- Error (rare) -->
+  <p *ngIf="!isLoading && errorMsg">{{ errorMsg }}</p>
+</section>

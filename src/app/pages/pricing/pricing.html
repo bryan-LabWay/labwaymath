@@ -33,12 +33,12 @@
   </div>
 
   <button
-  class="primary"
-  (click)="checkoutSelected()"
-  [disabled]="isCheckingOut"
->
-  {{ isCheckingOut ? 'Redirecting…' : 'Proceed to Payment' }}
-</button>
+    class="submit-btn"
+    (click)="checkoutSelected()"
+    [disabled]="isCheckingOut"
+  >
+    {{ isCheckingOut ? 'Redirecting…' : 'Sign Up' }}
+  </button>
 
 <p class="error" *ngIf="checkoutError">{{ checkoutError }}</p>
 

@@ -72,7 +72,11 @@ export class Pricing {
       const url = await this.billing.createCheckoutSession(this.selectedPlanCode);
       window.location.href = url;
     } catch (e: any) {
-      this.checkoutError = e?.message ?? 'Failed to start checkout.';
+      this.checkoutError =
+        e?.error?.message ||
+        e?.error?.error?.message ||
+        e?.message ||
+        'Failed to start checkout.';
       this.isCheckingOut = false;
     }
   }

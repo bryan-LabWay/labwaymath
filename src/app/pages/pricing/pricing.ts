@@ -52,10 +52,10 @@ export class Pricing {
     },
   ];
 
-  selectedPlanCode = this.pricingTiers[1].priceId;
+  selectedPriceId = this.pricingTiers[1].priceId;
 
   selectPlan(tier: PricingTier) {
-    this.selectedPlanCode = tier.priceId;
+    this.selectedPriceId = tier.priceId;
   }
 
   trackByTierCode(_index: number, plan: PricingTier) {
@@ -69,7 +69,7 @@ export class Pricing {
     this.checkoutError = '';
 
     try {
-      const url = await this.billing.createCheckoutSession(this.selectedPlanCode);
+      const url = await this.billing.createCheckoutSession(this.selectedPriceId);
       window.location.href = url;
     } catch (e: any) {
       this.checkoutError =

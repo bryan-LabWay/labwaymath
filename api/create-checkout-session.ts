@@ -36,6 +36,12 @@ export default async function handler(req: any, res: any) {
 
     res.status(200).json({ url: session.url });
   } catch (err: any) {
-    res.status(500).json({ message: err?.message ?? "Server error" });
+    console.error('Stripe error:', err);
+
+    return res.status(500).json({
+      message: err?.raw?.message || err?.message || 'Stripe server error',
+      type: err?.type,
+      code: err?.code,
+    });
   }
 }

@@ -46,6 +46,7 @@ export class BillingSuccess {
       }
 
       this.verifyPayment();
+      console.log('calling verifyPayment with sessionId', this.sessionId);
     });
   }
 
@@ -60,6 +61,7 @@ export class BillingSuccess {
       )
       .subscribe({
         next: (res) => {
+          console.log('verify response', res);
           this.verifyData = res;
           this.paid = !!res?.paid;
           this.isLoading = false; // ✅ THIS is what unblocks the UI

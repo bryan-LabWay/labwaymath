@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-billing-success',
   standalone: true,
+  imports: [CommonModule],
   templateUrl: './billing-success.html',
   styleUrl: './billing-success.scss',
 })
@@ -35,9 +37,7 @@ export class BillingSuccess implements OnInit {
     console.log('[BillingSuccess] final sessionId:', this.sessionId);
 
     if (!this.sessionId) {
-      // IMPORTANT: do NOT redirect immediately while debugging
-      // This is what’s currently hiding the real problem.
-      // this.router.navigate(['/pricing']);
+      this.router.navigate(['/pricing']);
       return;
     }
 

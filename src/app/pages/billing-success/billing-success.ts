@@ -33,23 +33,30 @@ export class BillingSuccess implements OnInit {
   }
 
   verifyPayment() {
+    this.isLoading = true;
+    this.errorMsg = '';
+
+    // adjust path if your verify endpoint differs
     this.http
-      .get<{ paid: boolean }>('/api/verify-checkout', {
-        params: { session_id: this.sessionId },
-      })
+      .get<{ paid: boolean; status?: string; message?: string }>(
+        `/api/verify-checkout?session_id=${encodeURIComponent(this.sessionId)}`
+      )
       .subscribe({
         next: (res) => {
-          this.isPaid = res.paid === true;
           this.isLoading = false;
 
-          if (!this.isPaid) {
-            // Payment not confirmed → send them back
-            this.router.navigate(['/pricing']);
+          if (!res?.paid) {
+            // DO NOT auto-redirect. Show message instead.
+            this.errorMsg =
+              res?.message ||
+              `We couldn't verify your payment yet (status: ${res?.status ?? 'unknown'}). Please refresh in a few seconds.`;
           }
         },
         error: () => {
           this.isLoading = false;
-          this.errorMsg = 'Unable to verify payment.';
+          // DO NOT auto-redirect. Show message instead.
+          this.errorMsg =
+            "We couldn't verify your payment right now. Please refresh in a few seconds.";
         },
       });
   }

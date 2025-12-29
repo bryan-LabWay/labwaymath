@@ -11,7 +11,6 @@ import { HttpClient } from '@angular/common/http';
 export class BillingSuccess implements OnInit {
   sessionId = '';
   isLoading = true;
-  isPaid = false;
   errorMsg = '';
 
   constructor(

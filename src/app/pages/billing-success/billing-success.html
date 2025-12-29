@@ -3,7 +3,7 @@
   <p *ngIf="isLoading">Verifying your payment…</p>
 
   <!-- Success -->
-  <div *ngIf="!isLoading && isPaid" class="billing-success__card">
+  <div *ngIf="!isLoading && !errorMsg" class="billing-success__card">
     <h1>Thank you.</h1>
 
     <p>
@@ -19,5 +19,8 @@
   </div>
 
   <!-- Error (rare) -->
-  <p *ngIf="!isLoading && errorMsg">{{ errorMsg }}</p>
+  <div *ngIf="!isLoading && errorMsg">
+    <p>{{ errorMsg }}</p>
+    <button (click)="verifyPayment()">Refresh verification</button>
+</div>
 </section>

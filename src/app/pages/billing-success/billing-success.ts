@@ -1,19 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+
+type VerifyResponse = {
+  paid: boolean;
+  payment_status?: string;
+  status?: string;
+  amount_total?: number;
+  currency?: string;
+};
 
 @Component({
   selector: 'app-billing-success',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './billing-success.html',
   styleUrl: './billing-success.scss',
 })
-export class BillingSuccess implements OnInit {
+export class BillingSuccess {
   sessionId = '';
+
   isLoading = true;
+  paid = false;
   errorMsg = '';
+  verifyData?: VerifyResponse;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,54 +33,42 @@ export class BillingSuccess implements OnInit {
   ) {}
 
   ngOnInit() {
-  // Listen for query params (more reliable than snapshot in some setups)
-  this.route.queryParamMap.subscribe((params) => {
-    const fromRouter = params.get('session_id') ?? '';
+    this.route.queryParamMap.subscribe((params) => {
+      const fromRouter = params.get('session_id') ?? '';
+      const fromWindow =
+        new URLSearchParams(window.location.search).get('session_id') ?? '';
 
-    // Fallback: read directly from the browser URL (bulletproof)
-    const fromWindow =
-      new URLSearchParams(window.location.search).get('session_id') ?? '';
+      this.sessionId = fromRouter || fromWindow;
 
-    this.sessionId = fromRouter || fromWindow;
+      if (!this.sessionId) {
+        this.router.navigate(['/pricing']);
+        return;
+      }
 
-    console.log('[BillingSuccess] fromRouter:', fromRouter);
-    console.log('[BillingSuccess] fromWindow:', fromWindow);
-    console.log('[BillingSuccess] final sessionId:', this.sessionId);
-
-    if (!this.sessionId) {
-      this.router.navigate(['/pricing']);
-      return;
-    }
-
-    this.verifyPayment();
-  });
-}
+      this.verifyPayment();
+    });
+  }
 
   verifyPayment() {
     this.isLoading = true;
     this.errorMsg = '';
+    this.paid = false;
 
-    // adjust path if your verify endpoint differs
     this.http
-      .get<{ paid: boolean; status?: string; message?: string }>(
+      .get<VerifyResponse>(
         `/api/verify-checkout?session_id=${encodeURIComponent(this.sessionId)}`
       )
       .subscribe({
         next: (res) => {
-          this.isLoading = false;
-
-          if (!res?.paid) {
-            // DO NOT auto-redirect. Show message instead.
-            this.errorMsg =
-              res?.message ||
-              `We couldn't verify your payment yet (status: ${res?.status ?? 'unknown'}). Please refresh in a few seconds.`;
-          }
+          this.verifyData = res;
+          this.paid = !!res?.paid;
+          this.isLoading = false; // ✅ THIS is what unblocks the UI
         },
-        error: () => {
-          this.isLoading = false;
-          // DO NOT auto-redirect. Show message instead.
+        error: (err) => {
+          this.isLoading = false; // ✅ also unblock on error
           this.errorMsg =
-            "We couldn't verify your payment right now. Please refresh in a few seconds.";
+            err?.error?.message ||
+            'We could not verify your payment right now. Please try again.';
         },
       });
   }

@@ -20,16 +20,30 @@ export class BillingSuccess implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.sessionId = this.route.snapshot.queryParamMap.get('session_id') ?? '';
+  // Listen for query params (more reliable than snapshot in some setups)
+  this.route.queryParamMap.subscribe((params) => {
+    const fromRouter = params.get('session_id') ?? '';
+
+    // Fallback: read directly from the browser URL (bulletproof)
+    const fromWindow =
+      new URLSearchParams(window.location.search).get('session_id') ?? '';
+
+    this.sessionId = fromRouter || fromWindow;
+
+    console.log('[BillingSuccess] fromRouter:', fromRouter);
+    console.log('[BillingSuccess] fromWindow:', fromWindow);
+    console.log('[BillingSuccess] final sessionId:', this.sessionId);
 
     if (!this.sessionId) {
-      // No session id → user manually navigated here
-      this.router.navigate(['/pricing']);
+      // IMPORTANT: do NOT redirect immediately while debugging
+      // This is what’s currently hiding the real problem.
+      // this.router.navigate(['/pricing']);
       return;
     }
 
     this.verifyPayment();
-  }
+  });
+}
 
   verifyPayment() {
     this.isLoading = true;

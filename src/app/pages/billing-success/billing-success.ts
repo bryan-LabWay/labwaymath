@@ -46,7 +46,6 @@ export class BillingSuccess {
       }
 
       this.verifyPayment();
-      console.log('calling verifyPayment with sessionId', this.sessionId);
     });
   }
 
@@ -61,13 +60,12 @@ export class BillingSuccess {
       )
       .subscribe({
         next: (res) => {
-          console.log('verify response', res);
           this.verifyData = res;
           this.paid = !!res?.paid;
-          this.isLoading = false; // ✅ THIS is what unblocks the UI
+          this.isLoading = false;
         },
         error: (err) => {
-          this.isLoading = false; // ✅ also unblock on error
+          this.isLoading = false;
           this.errorMsg =
             err?.error?.message ||
             'We could not verify your payment right now. Please try again.';

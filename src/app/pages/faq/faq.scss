@@ -17,8 +17,7 @@
   color: var(--faq-ink);
 }
 
-.faq-hero,
-.faq-cta {
+.faq-hero {
   position: relative;
   overflow: hidden;
   border-radius: 30px;
@@ -40,8 +39,7 @@
   max-width: 760px;
 }
 
-.faq-hero__eyebrow,
-.faq-cta__eyebrow {
+.faq-hero__eyebrow {
   margin: 0 0 0.75rem;
   font-size: 0.82rem;
   font-weight: 700;
@@ -49,8 +47,7 @@
   text-transform: uppercase;
 }
 
-.faq-hero__title,
-.faq-cta__title {
+.faq-hero__title {
   margin: 0;
   line-height: 1.08;
 }
@@ -218,55 +215,14 @@
   margin: 0;
 }
 
-.faq-cta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 2rem 2.2rem;
-  background:
-    linear-gradient(135deg, rgba(215, 230, 248, 0.8), rgba(255, 255, 255, 0.96)),
-    #fff;
-  border: 1px solid var(--faq-line);
-}
-
-.faq-cta__eyebrow {
-  color: var(--faq-blue);
-}
-
-.faq-cta__title {
-  max-width: 22ch;
-  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-  color: var(--faq-ink);
-}
-
-.faq-cta__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 180px;
-  padding: 0.9rem 1.6rem;
-  border-radius: 999px;
-  background: var(--faq-blue);
-  color: #fff;
-  font-weight: 700;
-  text-decoration: none;
-}
-
 @media (max-width: 900px) {
-  .faq-hero,
-  .faq-cta {
+  .faq-hero {
     grid-template-columns: 1fr;
     padding: 2rem 1.5rem;
   }
 
   .faq-hero__title {
     max-width: none;
-  }
-
-  .faq-cta {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }
 
@@ -287,9 +243,5 @@
 
   .faq-item__question {
     font-size: 1.05rem;
-  }
-
-  .faq-cta__button {
-    width: 100%;
   }
 }

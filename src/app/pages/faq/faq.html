@@ -1,0 +1,72 @@
+<main class="faq-page">
+  <section class="faq-hero">
+    <div class="faq-hero__content">
+      <p class="faq-hero__eyebrow">FAQ</p>
+      <h1 class="faq-hero__title">Clear answers for homeschool families exploring LABWay Math</h1>
+      <p class="faq-hero__description">
+        This page organizes the core LABWay Math questions into one place: who it
+        serves, what it is, why it exists, and how families use it in practice.
+      </p>
+    </div>
+
+    <aside class="faq-hero__card" aria-label="FAQ highlights">
+      <p class="faq-hero__card-label">At a glance</p>
+      <ul class="faq-hero__highlights">
+        <li>Built for homeschool parents teaching ages 5 to 15</li>
+        <li>Designed to work with your existing curriculum</li>
+        <li>Centered on logic before procedure</li>
+      </ul>
+      <a class="faq-hero__link" routerLink="/contact">Need a more specific answer?</a>
+    </aside>
+  </section>
+
+  <section class="faq-list" aria-label="Frequently asked questions">
+    <details
+      class="faq-item"
+      *ngFor="let faq of faqs; let index = index; let first = first; trackBy: trackByQuestion"
+      [attr.open]="first ? '' : null"
+      (toggle)="onFaqToggle($event)"
+    >
+      <summary class="faq-item__summary">
+        <span class="faq-item__number">{{ faqNumber(index) }}</span>
+        <span class="faq-item__question">{{ faq.question }}</span>
+        <span class="faq-item__icon" aria-hidden="true"></span>
+      </summary>
+
+      <div class="faq-item__content">
+        <ng-container *ngFor="let block of faq.blocks">
+          <p class="faq-item__paragraph" *ngIf="block.kind === 'paragraph'">
+            {{ block.text }}
+          </p>
+
+          <ng-container *ngIf="block.kind === 'list'">
+            <div class="faq-item__list-group" *ngIf="block.items as items">
+              <p class="faq-item__list-title" *ngIf="block.intro">{{ block.intro }}</p>
+              <ul class="faq-item__list">
+                <li class="faq-item__list-entry" *ngFor="let item of items">
+                  <p class="faq-item__list-copy">
+                    <strong>{{ item.title }}:</strong>
+                    {{ item.text }}
+                  </p>
+
+                  <ul class="faq-item__sublist" *ngIf="item.subItems?.length">
+                    <li *ngFor="let subItem of item.subItems">{{ subItem }}</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </details>
+  </section>
+
+  <section class="faq-cta">
+    <div>
+      <p class="faq-cta__eyebrow">Still deciding?</p>
+      <h2 class="faq-cta__title">Talk with LABWay Math about your homeschool needs.</h2>
+    </div>
+
+    <a class="faq-cta__button" routerLink="/contact">Contact Us</a>
+  </section>
+</main>

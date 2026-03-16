@@ -1,5 +1,5 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 type FaqListItem = {
@@ -28,9 +28,6 @@ type FaqEntry = {
   styleUrl: './faq.scss',
 })
 export class Faq {
-  private readonly platformId = inject(PLATFORM_ID);
-  private readonly isBrowser = isPlatformBrowser(this.platformId);
-
   readonly faqs: FaqEntry[] = [
     {
       question: 'Who is LABWay Math For?',
@@ -221,24 +218,5 @@ export class Faq {
 
   faqNumber(index: number) {
     return `${index + 1}`.padStart(2, '0');
-  }
-
-  onFaqToggle(event: Event) {
-    if (!this.isBrowser) {
-      return;
-    }
-
-    const faqItem = event.currentTarget as HTMLDetailsElement | null;
-    if (!faqItem) {
-      return;
-    }
-
-    window.setTimeout(() => {
-      faqItem.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'nearest',
-      });
-    }, faqItem.open ? 120 : 0);
   }
 }

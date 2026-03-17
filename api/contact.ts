@@ -59,7 +59,7 @@ module.exports = async function handler(req: VercelRequest, res: VercelResponse)
       email?: string;
       message?: string;
       website?: string;
-      recaptchaToken?: string; // ✅ new
+      recaptchaToken?: string; 
     };
 
     if (website) return res.status(200).json({ ok: true });
@@ -74,7 +74,7 @@ module.exports = async function handler(req: VercelRequest, res: VercelResponse)
       return res.status(400).json({ message: "Message too long." });
     }
 
-    // ✅ reCAPTCHA required
+    // reCAPTCHA required
     if (!recaptchaToken) {
       return res.status(400).json({ message: "reCAPTCHA verification is required." });
     }

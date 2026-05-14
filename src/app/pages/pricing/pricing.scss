@@ -1,42 +1,102 @@
 .pricing {
-  padding: 4rem 6vw 6rem;
+  --page-blue: #0b5694;
+  --page-blue-dark: #093b63;
+  --page-blue-soft: #d7e6f8;
+  --page-ink: #14202b;
+  --page-line: #c9d8e8;
+
+  padding: 1rem 0 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2.5rem;
+  color: var(--page-ink);
 }
 
 .pricing__banner {
   position: relative;
   width: 100%;
   max-width: 1440px;
-  background: #00549e;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.9fr);
+  gap: 1.5rem;
+  align-items: end;
+  background:
+    radial-gradient(circle at top right, rgba(215, 230, 248, 0.28), transparent 38%),
+    linear-gradient(135deg, var(--page-blue-dark), var(--page-blue));
   color: #ffffff;
-  padding: 3.5rem 2.5rem 6.5rem;
-  border-radius: 15px;
+  padding: 2.75rem 2.75rem 7.5rem;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.pricing__hero-content {
+  max-width: 760px;
+  position: relative;
+  z-index: 1;
+}
+
+.pricing__eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .pricing__title {
-  text-align: center;
-  font-size: 2.3rem;
-  font-weight: 400;
+  max-width: 13ch;
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.08;
   margin: 0;
+}
+
+.pricing__description {
+  max-width: 48ch;
+  margin: 1rem 0 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.pricing__hero-card {
+  position: relative;
+  z-index: 1;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.1);
+
+  ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    display: grid;
+    gap: 0.8rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.92);
+  }
+}
+
+.pricing__hero-card-label {
+  margin: 0 0 1rem;
+  font-weight: 700;
 }
 
 .pricing__circle {
   position: absolute;
-  top: 50%;
-  right: 8%;
-  width: 260px;
-  height: 260px;
+  top: -120px;
+  right: -80px;
+  width: 360px;
+  height: 360px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.18);
-  transform: translateY(-40%);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .pricing__cards {
   position: relative;
-  margin-top: -100px; // pull cards up over the blue banner
+  margin-top: -110px; // pull cards up over the blue banner
   width: 100%;
   max-width: 1100px;
   display: flex;
@@ -57,27 +117,29 @@
 }
 
 .pricing__discount-label {
-  font-size: 1.7rem;
-  color: #444444;
+  font-size: 1.35rem;
+  color: var(--page-ink);
+  font-weight: 700;
 }
 
 .pricing__discount-input {
   min-width: 260px;
   padding: 0.85rem 1.2rem;
   font-size: 1.2rem;
-  border-radius: 0.6rem;
-  border: 1px solid #d0d0d0;
-  background: #f5f5f5;
+  border-radius: 16px;
+  border: 1px solid var(--page-line);
+  background: #f4f8fc;
 }
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
   .pricing__banner {
-    padding: 2.5rem 1.5rem 6rem;
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem 7rem;
   }
 
   .pricing__title {
-    font-size: 1.8rem;
+    max-width: none;
   }
 
   .pricing__circle {

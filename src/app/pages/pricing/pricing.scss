@@ -85,8 +85,14 @@
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
+  .pricing {
+    gap: 2rem;
+    padding-bottom: 4rem;
+  }
+
   .pricing__banner {
     padding: 2.5rem 1.5rem 6rem;
+    border-radius: 18px;
   }
 
   .pricing__title {
@@ -100,7 +106,45 @@
   }
 
   .pricing__cards {
-    margin-top: -120px;
+    margin-top: -96px;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .pricing {
+    padding-top: 0.5rem;
+  }
+
+  .pricing__banner {
+    padding: 2rem 1rem 5.5rem;
+  }
+
+  .pricing__title {
+    font-size: 1.55rem;
+    line-height: 1.25;
+  }
+
+  .pricing__cards {
+    margin-top: -82px;
+  }
+
+  .pricing__discount {
+    width: 100%;
+    margin-top: 0.5rem;
+    align-items: stretch;
+  }
+
+  .pricing__discount-label {
+    width: 100%;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .pricing__discount-input,
+  .submit-btn {
+    width: 100%;
+    min-width: 0;
   }
 }
 
@@ -168,5 +212,15 @@
     color: #64748b;           // slate-500
     cursor: not-allowed;
     opacity: 0.9;
+  }
+}
+
+@media (max-width: 640px) {
+  .pricing-card-wrapper,
+  .pricing-card-wrapper:hover,
+  .pricing-card-wrapper.selected,
+  .pricing-card-wrapper.selected:hover {
+    width: 100%;
+    transform: none;
   }
 }

@@ -131,3 +131,59 @@
 .a3 { bottom: 80px; left: 15%; }
 .a4 { bottom: 130px; right: 12%; }
 .a5 { top: 180px; left: 5%; }
+
+@media (max-width: 768px) {
+  .testimonial-section {
+    padding: 36px 16px;
+    border-radius: 16px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+  }
+
+  .carousel {
+    height: auto;
+    min-height: 260px;
+    padding: 0 2rem;
+  }
+
+  .quote {
+    font-size: 1rem;
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+
+  .nav-btn {
+    font-size: 28px;
+    padding: 0;
+  }
+
+  .left {
+    left: 0;
+  }
+
+  .right {
+    right: 0;
+  }
+
+  .dots {
+    margin-top: 24px;
+  }
+
+  .avatar {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .carousel {
+    padding: 0 1.5rem;
+  }
+
+  .author {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

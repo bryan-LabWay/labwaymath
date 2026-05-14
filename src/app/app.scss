@@ -6,6 +6,7 @@
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 1rem;
+  width: 100%;
 }
 
 .site-header {
@@ -56,4 +57,52 @@
 .nav-links a:hover {
   opacity: 1;
   border-bottom: 2px solid #38bdf8;
+}
+
+@media (max-width: 700px) {
+  .site-main {
+    padding: 0.75rem 0 2.5rem;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .header-inner {
+    min-height: auto;
+    padding: 0.75rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .logo a {
+    justify-content: center;
+    gap: 0.55rem;
+    font-size: 1rem;
+  }
+
+  .logo img {
+    width: 48px;
+  }
+
+  .nav-links {
+    justify-content: center;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    min-height: 40px;
+    padding: 0.55rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    background: #f4f8fc;
+  }
+
+  .nav-links a.active,
+  .nav-links a:hover {
+    border-bottom: 0;
+    background: #d7e6f8;
+  }
 }

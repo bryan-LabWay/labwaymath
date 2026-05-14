@@ -22,13 +22,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  min-height: 88px;
 }
 
 .logo a {
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo img {
+  display: block;
+  width: 64px;
+  height: auto;
 }
 
 .nav-links {

@@ -161,7 +161,9 @@
   max-width: 260px;
 
   .company-logo {
-    width: 90px;
+    display: block;
+    width: 120px;
+    height: auto;
     margin-bottom: 12px;
   }
 

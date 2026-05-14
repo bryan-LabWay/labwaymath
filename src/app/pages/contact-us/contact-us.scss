@@ -16,53 +16,24 @@
   position: relative;
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto 8rem;
-  padding-bottom: 420px;
+  margin: 0 auto 15rem;
+  padding-bottom: 320px;
 }
 
 .banner-strip {
   width: 100%;
-  min-height: 320px;
-  padding: 2.75rem;
+  height: 190px;
   border-radius: 30px;
   background:
     radial-gradient(circle at top right, rgba(215, 230, 248, 0.28), transparent 38%),
     linear-gradient(135deg, var(--page-blue-dark), var(--page-blue));
-  color: #ffffff;
   overflow: hidden;
-}
-
-.contact-hero__content {
-  max-width: 520px;
-}
-
-.contact-hero__eyebrow {
-  margin: 0 0 0.75rem;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.contact-hero__title {
-  max-width: 12ch;
-  margin: 0;
-  font-size: clamp(2.5rem, 5vw, 4.4rem);
-  line-height: 1.08;
-}
-
-.contact-hero__description {
-  max-width: 48ch;
-  margin: 1rem 0 0;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.88);
 }
 
 .logo-circle {
   position: absolute;
   left: 2.75rem;
-  top: 250px;
+  top: 40px;
   width: 220px;
   height: 220px;
   border-radius: 50%;
@@ -81,9 +52,11 @@
 
 .contact-card {
   position: absolute;
-  right: 2.75rem;
-  top: 110px;
-  width: min(650px, calc(100% - 5.5rem));
+  left: 0;
+  right: 0;
+  top: 40px;
+  width: min(650px, calc(100% - 2rem));
+  margin: 0 auto;
   background: #ffffff;
   border: 1px solid var(--page-line);
   border-radius: 24px;

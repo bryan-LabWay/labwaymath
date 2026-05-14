@@ -1,68 +1,74 @@
 .contact-page {
+  --page-blue: #0b5694;
+  --page-blue-dark: #093b63;
+  --page-blue-soft: #d7e6f8;
+  --page-ink: #14202b;
+  --page-line: #c9d8e8;
+  --page-surface-soft: #f4f8fc;
+
   display: flex;
   justify-content: center;
-  padding: 4rem 0;
-  
+  padding: 1rem 0 3rem;
+  color: var(--page-ink);
 }
 
-/* Wrapper for banner + circle + card */
 .contact-banner {
   position: relative;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto 15rem;   // add bottom spacing before footer
-  padding-bottom: 320px; // <- key line: reserve vertical space for the card
+  max-width: 1440px;
+  margin: 0 auto 15rem;
+  padding-bottom: 320px;
 }
 
-/* Blue strip (copy values from your Pricing banner here) */
 .banner-strip {
   width: 100%;
   height: 190px;
-  background-color: #0b5694;
-  border-radius: 15px;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at top right, rgba(215, 230, 248, 0.28), transparent 38%),
+    linear-gradient(135deg, var(--page-blue-dark), var(--page-blue));
+  overflow: hidden;
 }
 
-/* Big circle with logo */
 .logo-circle {
   position: absolute;
-  left: 20px;       // move a bit more to the right
-  top: 40px;         // slightly higher
-  width: 260px;
-  height: 260px;
+  left: 2.75rem;
+  top: 40px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
-  background-color: #d7e6f8;
-  filter: drop-shadow(10px 8px 12px rgba(0, 0, 0, 0.6));
+  background-color: var(--page-blue-soft);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
-  
+  box-shadow: 0 14px 30px rgba(9, 59, 99, 0.16);
 }
 
 .logo-house {
-  max-width: 55%;
+  display: block;
+  max-width: 72%;
+  max-height: 82%;
 }
 
-/* White roundedcontact card */
 .contact-card {
   position: absolute;
+  left: 0;
   right: 0;
-  left: 90px;
   top: 40px;
+  width: min(650px, calc(100% - 2rem));
   margin: 0 auto;
-  max-width: 650px;
   background: #ffffff;
-  border-radius: 60px;
+  border: 1px solid var(--page-line);
+  border-radius: 24px;
   padding: 3rem 3.5rem 2.5rem;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 14px 30px rgba(9, 59, 99, 0.12);
 }
 
-/* Title */
 .contact-title {
   margin: 0 0 1.8rem;
   font-size: 2.25rem;
-  font-weight: 500;
-  color: #4b4b4b;
+  font-weight: 700;
+  color: var(--page-ink);
 }
 
 /* Form layout */
@@ -76,8 +82,8 @@
   display: block;
   margin-bottom: 0.4rem;
   font-size: 1.1rem;
-  font-weight: 400;
-  color: #2b7bbf; // bluish label text like in design
+  font-weight: 700;
+  color: var(--page-blue);
 }
 
 .form-group .required {
@@ -88,9 +94,9 @@
 input,
 textarea {
   width: 100%;
-  border-radius: 2px;
-  border: 1px solid #d3d3d3;
-  background-color: #f2f2f2;
+  border-radius: 16px;
+  border: 1px solid var(--page-line);
+  background-color: var(--page-surface-soft);
   padding: 0.6rem 0.75rem;
   font-size: 0.98rem;
   font-family: inherit;
@@ -140,19 +146,26 @@ textarea {
 /* Small responsiveness */
 @media (max-width: 900px) {
   .logo-circle {
-    display: none; // hide circle on very small screens
+    display: none;
+  }
+
+  .contact-banner {
+    margin-bottom: 2rem;
+    padding-bottom: 0;
   }
 
   .contact-card {
     position: relative;
+    width: auto;
     left: 0;
     right: 0;
-    top: -90px;
+    top: -2rem;
     max-width: 100%;
-    border-radius: 40px;
+    margin: 0 1rem;
   }
+}
 
-  .loading-overlay {
+.loading-overlay {
   position: fixed;
   inset: 0;
   background: rgba(15, 23, 42, 0.55); // dark overlay
@@ -185,8 +198,6 @@ textarea {
   to {
     transform: rotate(360deg);
   }
-}
-
 }
 
 .error {

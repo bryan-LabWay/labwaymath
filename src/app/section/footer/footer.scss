@@ -161,14 +161,19 @@
   max-width: 260px;
 
   .company-logo {
-    width: 90px;
-    margin-bottom: 12px;
+    display: block;
+    width: 120px;
+    height: 166px;
+    object-fit: cover;
+    object-position: top;
+    margin-bottom: 6px;
   }
 
   .description {
     font-size: 15px;
     opacity: 0.8;
     line-height: 1.4;
+    margin-top: 0;
   }
 }
 

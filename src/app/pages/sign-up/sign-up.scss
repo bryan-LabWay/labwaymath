@@ -212,6 +212,58 @@ input.ng-touched.ng-invalid:focus {
   }
 }
 
+@media (max-width: 640px) {
+  .contact-page {
+    padding: 0.5rem 0 2rem;
+  }
+
+  .contact-banner {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .banner-strip {
+    height: 120px;
+    border-radius: 18px;
+  }
+
+  .contact-card {
+    top: -1.5rem;
+    border-radius: 18px;
+    padding: 2rem 1.25rem;
+  }
+
+  .contact-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-form {
+    gap: 1rem;
+  }
+
+  .form-group label {
+    font-size: 1rem;
+  }
+
+  input {
+    min-height: 44px;
+    font-size: 1rem;
+  }
+
+  .submit-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .submit-btn,
+  .secondary-btn {
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+  }
+}
+
 .loading-box p {
   color: #000;
 }

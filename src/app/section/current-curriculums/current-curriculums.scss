@@ -65,11 +65,52 @@
 .book-6 { bottom: 12%; right: 26%; transform: rotate(-6deg); width: 300px;}
 
 @media (max-width: 768px) {
+  .curriculums-text {
+    margin-bottom: 1.5rem;
+
+    p {
+      font-size: 1.1rem;
+      padding-left: 0;
+    }
+  }
+
   .curriculums-table {
-    aspect-ratio: 3 / 4;
+    width: 100%;
+    aspect-ratio: auto;
+    min-height: 620px;
   }
 
   .book {
     width: 110px;       // smaller on mobile
+  }
+
+  .book-0 { top: 0; left: 2%; width: 126px; }
+  .book-1 { top: 8%; right: 3%; width: 126px; }
+  .book-2 { top: 22%; left: 25%; width: 126px; }
+  .book-3 { top: 39%; right: 8%; width: 126px; }
+  .book-4 { top: 38%; left: 3%; width: 138px; }
+  .book-5 { bottom: 6%; left: 8%; width: 150px; }
+  .book-6 { bottom: 0; right: 8%; width: 150px; }
+}
+
+@media (max-width: 420px) {
+  .curriculums-table {
+    min-height: 560px;
+  }
+
+  .book-0,
+  .book-1,
+  .book-2,
+  .book-3 {
+    width: 108px;
+  }
+
+  .book-4 {
+    width: 120px;
+  }
+
+  .book-5,
+  .book-6 {
+    width: 132px;
   }
 }
